@@ -1,0 +1,31 @@
+#应用模块的端口号
+server:
+  port: 8084
+
+spring:
+  #spring整合数据源
+  datasource:
+    username: root
+    password: 123456
+    url: jdbc:mysql://localhost:3306/scwdb?serverTimezone=GMT%2B8&useSSL=false&useUnicode=true&characterEncoding=UTF-8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    filters: stat  #开启监控过滤器
+
+    #整合Thymeleaf
+  thymeleaf:
+    prefix: classpath:/templates/   #在构建URL时预先查看名称的前缀
+    suffix: .html  #构建URL时附加到查看名称的后缀
+    cache: false #禁用模板缓存
+
+#整合mybatis配置
+mybatis:
+  config-location: classpath:mybatis/mybatis-config.xml
+  mapper-locations: classpath:com/dfgx/user/mapper/*.xml
+
+
+  #应用名
+  application:
+    name: MVC
+
+
