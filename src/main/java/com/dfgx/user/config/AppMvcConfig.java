@@ -26,5 +26,6 @@ public class AppMvcConfig implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor( myInterceptor).addPathPatterns("/user/select");//.excludePathPatterns("/user/select")
     }
+     
 }
 
