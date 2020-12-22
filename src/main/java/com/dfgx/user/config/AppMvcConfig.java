@@ -15,17 +15,17 @@ public class AppMvcConfig implements WebMvcConfigurer {
     @Autowired
     private MyInterceptor myInterceptor;
 
-/*
-    //页面跳转
+  /*  //页面跳转
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/login.html").setViewName("login");
-    }
-*/
+        registry.addViewController("/interCeptor.html").setViewName("interCeptor");
+    }*/
+
     //拦截器
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor( myInterceptor).addPathPatterns("/user").excludePathPatterns("/user/select");
+        registry.addInterceptor( myInterceptor).addPathPatterns("/user/select");
+        //.excludePathPatterns("/user/select")
     }
 }
 

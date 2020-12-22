@@ -12,10 +12,10 @@ spring:
     type: com.alibaba.druid.pool.DruidDataSource
     filters: stat  #开启监控过滤器
 
-  #springMvc
+#  springMvc
 #  mvc:
 #    view:
-#      prefix: /WEB-INF/
+#      prefix: /Template/
 #      suffix: .html
 
 #整合mybatis配置
