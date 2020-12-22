@@ -20,17 +20,32 @@ public class UserController {
     private UserService userService;
 
     @ApiOperation(value ="用户查询" )
-    @PostMapping("/select")
+    @GetMapping("/select")
     public List<TUser> select(){
         return userService.select();
     }
 
     @ApiOperation(value ="用户查询2" )
     @PostMapping("/select2")
-    @RequestMapping("/select2")
     @ResponseBody
     public TUser select2(){
         List<TUser> list = userService.select();
         return list.get(0);
+    }
+
+    @ApiOperation(value ="用户查询2" )
+    @PostMapping("/insert")
+    public int insert(@RequestBody TUser user){
+        return userService.insert(user);
+    }
+
+    @PutMapping("/update")
+    public int update(@RequestParam Integer id){
+        return userService.update(id);
+    }
+
+    @DeleteMapping("/delete")
+    public int delete(@RequestParam Integer id){
+        return userService.delete(id);
     }
 }

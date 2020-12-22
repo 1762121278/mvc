@@ -22,11 +22,9 @@ public class AppMvcConfig implements WebMvcConfigurer {
         registry.addViewController("/login.html").setViewName("login");
     }
 */
-
     //拦截器
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-
         registry.addInterceptor( myInterceptor).addPathPatterns("/user").excludePathPatterns("/user/select");
     }
 }

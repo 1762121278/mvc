@@ -1,5 +1,8 @@
 package com.dfgx.user.pojo;
 
+import lombok.ToString;
+
+@ToString
 public class TUser {
     private Integer id;
 

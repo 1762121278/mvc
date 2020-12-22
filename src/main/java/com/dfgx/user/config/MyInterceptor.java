@@ -15,6 +15,8 @@ public class MyInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         System.out.println("preHandle is running");
+        String loginacct = request.getParameter("loginacct");
+        System.out.println(loginacct);
         return true;
     }
 
