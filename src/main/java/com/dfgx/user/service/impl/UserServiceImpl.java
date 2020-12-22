@@ -23,8 +23,4 @@ public class UserServiceImpl implements UserService {
         System.out.println(users);
         return users;
     }
-
-
-
-
 }

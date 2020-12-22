@@ -26,11 +26,11 @@ public class UserController {
         return userService.select();
     }
 
-    @ApiOperation(value ="用户查询" )
+ /*   @ApiOperation(value ="用户查询" )
     @GetMapping("/select2")
     @ResponseBody
     public TUser select2(){
         List<TUser> list = userService.select();
         return list.get(0);
-    }
+    }*/
 }
