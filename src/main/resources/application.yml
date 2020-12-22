@@ -12,11 +12,11 @@ spring:
     type: com.alibaba.druid.pool.DruidDataSource
     filters: stat  #开启监控过滤器
 
-    #整合Thymeleaf
-  thymeleaf:
-    prefix: classpath:/templates/   #在构建URL时预先查看名称的前缀
-    suffix: .html  #构建URL时附加到查看名称的后缀
-    cache: false #禁用模板缓存
+  #springMvc
+#  mvc:
+#    view:
+#      prefix: /WEB-INF/
+#      suffix: .html
 
 #整合mybatis配置
 mybatis:

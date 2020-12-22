@@ -20,17 +20,17 @@ public class UserController {
     private UserService userService;
 
     @ApiOperation(value ="用户查询" )
-    @GetMapping("/select")
-    @ResponseBody
+    @PostMapping("/select")
     public List<TUser> select(){
         return userService.select();
     }
 
- /*   @ApiOperation(value ="用户查询" )
-    @GetMapping("/select2")
+    @ApiOperation(value ="用户查询2" )
+    @PostMapping("/select2")
+    @RequestMapping("/select2")
     @ResponseBody
     public TUser select2(){
         List<TUser> list = userService.select();
         return list.get(0);
-    }*/
+    }
 }
