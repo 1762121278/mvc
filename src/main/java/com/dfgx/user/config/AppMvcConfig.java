@@ -24,8 +24,8 @@ public class AppMvcConfig implements WebMvcConfigurer {
     //拦截器
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor( myInterceptor).addPathPatterns("/user/select");//.excludePathPatterns("/user/select")
+        registry.addInterceptor(myInterceptor).addPathPatterns("/user/select");//.excludePathPatterns("/user/select")
     }
-     
+
 }
 

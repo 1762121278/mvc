@@ -1,8 +1,8 @@
 package com.dfgx.user.mapper;
 
 import org.apache.ibatis.annotations.Param;
-import com.dfgx.user.pojo.TUser;
-import com.dfgx.user.pojo.TUserExample;
+import com.dfgx.user.entity.TUser;
+import com.dfgx.user.entity.TUserExample;
 import org.springframework.stereotype.Repository;
 
 

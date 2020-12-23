@@ -1,4 +1,4 @@
-package com.dfgx.user.pojo;
+package com.dfgx.user.entity;
 
 import lombok.ToString;
 

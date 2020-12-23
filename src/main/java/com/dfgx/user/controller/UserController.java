@@ -1,12 +1,11 @@
 package com.dfgx.user.controller;
 
 
-import com.dfgx.user.pojo.TUser;
+import com.dfgx.user.entity.TUser;
 import com.dfgx.user.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,33 +18,33 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @ApiOperation(value ="用户查询" )
+    @ApiOperation(value = "用户查询")
     @PostMapping("/select")
-    public List<TUser> select(){
+    public List<TUser> select() {
         return userService.select();
     }
 
-    @ApiOperation(value ="用户查询2" )
+    @ApiOperation(value = "用户查询2")
     @PostMapping("/select2")
     @ResponseBody
-    public TUser select2(){
+    public TUser select2() {
         List<TUser> list = userService.select();
         return list.get(0);
     }
 
-    @ApiOperation(value ="用户查询2" )
+    @ApiOperation(value = "用户查询2")
     @PostMapping("/insert")
-    public int insert(@RequestBody TUser user){
+    public int insert(@RequestBody TUser user) {
         return userService.insert(user);
     }
 
     @PutMapping("/update")
-    public int update(@RequestParam Integer id){
+    public int update(@RequestParam Integer id) {
         return userService.update(id);
     }
 
     @DeleteMapping("/delete")
-    public int delete(@RequestParam Integer id){
+    public int delete(@RequestParam Integer id) {
         return userService.delete(id);
     }
 }

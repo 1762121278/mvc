@@ -1,13 +1,16 @@
 package com.dfgx.user.service.impl;
 
 import com.dfgx.user.mapper.TUserMapper;
-import com.dfgx.user.pojo.TUser;
-import com.dfgx.user.pojo.TUserExample;
+import com.dfgx.user.entity.TUser;
+import com.dfgx.user.entity.TUserExample;
 import com.dfgx.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.BoundValueOperations;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -71,4 +74,6 @@ public class UserServiceImpl implements UserService {
         TUserExample.Criteria criteria = example.createCriteria().andIdEqualTo(9);
         return userMapper.deleteByExample(example);
     }
+
+
 }

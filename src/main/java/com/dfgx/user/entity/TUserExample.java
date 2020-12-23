@@ -1,4 +1,4 @@
-package com.dfgx.user.pojo;
+package com.dfgx.user.entity;
 
 import java.util.ArrayList;
 import java.util.List;

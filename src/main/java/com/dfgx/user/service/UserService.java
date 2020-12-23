@@ -1,7 +1,7 @@
 package com.dfgx.user.service;
 
 
-import com.dfgx.user.pojo.TUser;
+import com.dfgx.user.entity.TUser;
 
 import java.util.List;
 
