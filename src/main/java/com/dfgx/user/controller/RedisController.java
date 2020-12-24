@@ -92,6 +92,7 @@ public class RedisController {
         str.set("redis-String");
         str.expire(10,TimeUnit.SECONDS);
         String strV = (String)str.get();
+        System.out.println(strV);
         return strV;
     }
 }
