@@ -18,6 +18,12 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    /**
+     * @description: todo
+     * @Param: []
+     * @Return: java.util.List<com.dfgx.user.entity.TUser>
+     * @Author: Today
+     */
     @ApiOperation(value = "用户查询")
     @PostMapping("/select")
     public List<TUser> select() {
@@ -32,6 +38,12 @@ public class UserController {
         return list.get(0);
     }
 
+    /**
+     * @description: todo
+     * @Param: [user]
+     * @Return: int
+     * @Author: Today
+     */
     @ApiOperation(value = "用户查询2")
     @PostMapping("/insert")
     public int insert(@RequestBody TUser user) {

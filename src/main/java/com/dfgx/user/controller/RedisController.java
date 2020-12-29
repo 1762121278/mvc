@@ -1,7 +1,9 @@
 package com.dfgx.user.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.dfgx.user.annotation.LogAnnotation;
-import com.dfgx.user.service.ReService;
+
+import com.dfgx.user.service.UserService;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.*;
@@ -10,8 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
-import javax.annotation.Resources;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
@@ -23,7 +24,6 @@ public class RedisController {
 
     @Autowired
     private RedisTemplate redisTemplate;
-
 
     /**
      * @return: void
@@ -46,7 +46,7 @@ public class RedisController {
         listOperations.leftPush("list", "world");
         listOperations.leftPush("list", "java");
         List<String> list = listOperations.range("list", 0, 2);   // 取 key 值为 list 的索引0到索引2的list
-        redisTemplate.expire("list",6,TimeUnit.SECONDS);
+        redisTemplate.expire("list", 6, TimeUnit.SECONDS);
         return list;
     }
 
@@ -58,7 +58,7 @@ public class RedisController {
         setOperations.add("set", "world");
         setOperations.add("set", "java");
         Set<String> set = setOperations.members("set");   // 取 set
-        redisTemplate.expire("list",6,TimeUnit.MINUTES);
+        redisTemplate.expire("list", 6, TimeUnit.MINUTES);
         return set;
     }
 
@@ -70,7 +70,7 @@ public class RedisController {
         zSetOperations.add("zset", "hello", 3);
         zSetOperations.add("zset", "world", 2);
         Set<String> set = zSetOperations.range("zset", 0, 2);
-        redisTemplate.expire("list",6,TimeUnit.MINUTES);
+        redisTemplate.expire("list", 6, TimeUnit.MINUTES);
         System.out.println(set);
         return set;
     }
@@ -81,18 +81,32 @@ public class RedisController {
         hashOperations.put("key", "hashkey1", "hello");
         hashOperations.put("key", "hashkey2", "world");
         hashOperations.put("key", "hashkey3", "java");
-        redisTemplate.expire("list",6,TimeUnit.MINUTES);
+        redisTemplate.expire("list", 6, TimeUnit.MINUTES);
         return hashOperations.get("key", "hashkey2");
     }
 
     @GetMapping("/Str")
-    @LogAnnotation
-    public String testString(){
+    public String testString() {
         BoundValueOperations str = redisTemplate.boundValueOps("str");
         str.set("redis-String");
-        str.expire(10,TimeUnit.SECONDS);
-        String strV = (String)str.get();
+        str.expire(10, TimeUnit.SECONDS);
+        String strV = (String) str.get();
         System.out.println(strV);
         return strV;
+    }
+
+    @GetMapping("/list2")
+    @LogAnnotation("打印日志")
+    public void testList() {
+        init();
+        ArrayList<Integer> list = new ArrayList<>();
+        list.add(1);
+        list.add(2);
+        list.add(3);
+        String jsonString = JSON.toJSONString(list);
+        BoundListOperations listOps = redisTemplate.boundListOps("lists");
+        listOps.leftPush(jsonString);
+        System.out.println(listOps.leftPop());
+        listOps.expire(10, TimeUnit.SECONDS);
     }
 }
