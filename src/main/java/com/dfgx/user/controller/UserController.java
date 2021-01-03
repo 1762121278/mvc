@@ -22,7 +22,6 @@ public class UserController {
      * @description: todo
      * @Param: []
      * @Return: java.util.List<com.dfgx.user.entity.TUser>
-     * @Author: Today
      */
     @ApiOperation(value = "用户查询")
     @PostMapping("/select")
@@ -59,4 +58,5 @@ public class UserController {
     public int delete(@RequestParam Integer id) {
         return userService.delete(id);
     }
+
 }

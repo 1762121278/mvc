@@ -23,6 +23,7 @@ public class UserServiceImpl implements UserService {
      * @date: 2020/12/22 14:25
      * @description:查询所有
      */
+    @Override
     public List<TUser> select() {
         TUserExample example = new TUserExample();
         TUserExample.Criteria criteria = example.createCriteria().andIdEqualTo(8);

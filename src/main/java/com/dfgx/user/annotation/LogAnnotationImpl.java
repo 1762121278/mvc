@@ -9,6 +9,9 @@ import org.springframework.stereotype.Component;
 
 import java.util.logging.Logger;
 
+/**
+ * @author Today
+ */
 @Aspect
 @Component
 public class LogAnnotationImpl {

@@ -109,4 +109,18 @@ public class RedisController {
         System.out.println(listOps.leftPop());
         listOps.expire(10, TimeUnit.SECONDS);
     }
+
+    @GetMapping("/test1")
+    public void test1() {
+        System.out.println("1");
+        System.out.println("2");
+        System.out.println("3");
+        System.out.println("4");
+        System.out.println(add());
+        System.out.println("6");
+    }
+
+       String  add(){
+        return "5";
+    }
 }

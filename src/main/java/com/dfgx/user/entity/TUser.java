@@ -23,6 +23,17 @@ public class TUser {
     private String cardnum;
 
     private String accttype;
+    private TUser user;
+
+    public TUser getUser() {
+        return user;
+    }
+
+    public void setUser(TUser user) {
+        this.user = user;
+    }
+
+
 
     public Integer getId() {
         return id;
