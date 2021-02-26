@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+</head>
+<body>
+<input type="button" id="but1" name="but1" value="点击发送请求">
+    <script>
+        $("#but1").click(function(){
+            var taskVO = {
+                loginId:"administrator"
+            };
+            $.ajax({
+                type:'POST',
+                url:'http://localhost:8086/workTask/toDoTask/exportExcel',
+                data:taskVO,
+                dataType:'text',
+                contentType: "application/ms excel; charset=utf-8",
+                success:function(data){
+                    alert("xiazai")
+                }
+            })
+        }) ;
+
+    </script>
+</body>
+</html>

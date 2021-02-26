@@ -17,6 +17,46 @@ spring:
     port: 6379
     password: offcn123
 
+    # 指定kafka 代理地址，可以多个
+  kafka:
+    #指定kafka server的地址，集群配多个，中间，逗号隔开,或者使用  列表格式
+    # - 服务1
+    # - 服务2   ....
+    bootstrap-servers: 192.168.188.128:9092
+    #=============== provider  =======================
+    producer:
+      retries: 0
+      # 每次批量发送消息的数量
+      batch-size: 16384
+      acks: 1
+      #这个值只能大不能小了，否则会影响sleuth。可以使用的最大内存来缓存等待发送到server端的消息
+      buffer-memory: 1048576  # 这是最小的?
+      # 指定消息key和消息体的编解码方式
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      properties:
+        # 单个请求的最大大小（以字节为单位）
+        max.request.size: 2097152
+        # 从发送请求到收到ACK确认等待的最长时间（超时时间）
+        request.timeout.ms: 40000
+        # 这项设置设定了批量处理的更高的延迟边界：一旦我们获得某个partition的batch.size，他将会立即发送而不顾这项设置，然而如果我们获得消息字节数比这项设置要小的多，
+        # 我们需要“linger”特定的时间以获取更多的消息。 这个设置默认为0，即没有延迟。设定linger.ms=5，例如，将会减少请求数目，但是同时会增加5ms的延迟。
+        linger.ms: 1
+        # 消息发送失败的情况下，重试发送的次数 存在消息发送是成功的，只是由于网络导致ACK没收到的重试，会出现消息被重复发送的情况
+        message.send.max.retries: 0
+    consumer:
+      # 指定默认消费者group id
+      group-id: test-consumer-group
+      auto-offset-reset: earliest
+      enable-auto-commit: true
+      auto-commit-interval: 100
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+
+  #应用名
+  application:
+    name: MVC
+
 #  springMvc
 #  mvc:
 #    view:
@@ -29,8 +69,9 @@ mybatis:
   mapper-locations: classpath:com/dfgx/user/mapper/*.xml
 
 
-  #应用名
-  application:
-    name: MVC
+
+
+
+
 
 

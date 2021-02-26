@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="UserMapper">
+    <select id="selectAll" resultType="com.offcn.user.pojo.User">
+        select * from user
+    </select>
+<select id="qw">
+        SELECT A.ID_ ID,
+         A.ID_,
+         A.PROC_INST_ID_ PROC_INST_ID,
+           A.PROC_DEF_ID_ PROC_DEF_ID,
+            A.NAME_ NAME,
+             A.DESCRIPTION_ TASK_DESC,
+                ASSIGNEE_ ASSIGNEE,
+                   TASK_DEF_KEY_ TASK_DEF_KEY,
+                     DATE_FORMAT(CREATE_TIME_,'%Y-%m-%d %H:%i:%s')
+                       CREATE_TIME,
+                        A.CREATE_TIME_,
+                          C.NAME_ PROC_NAME,
+                            C.KEY_ PROC_KEY,
+                                  C.CATEGORY_ PROC_CATEGORY,EXECUTION_ID_,
+                                     DATE_FORMAT(H.START_TIME_,'%Y-%m-%d %H:%i:%s') PROC_START_TIME,
+                                        H.START_USER_ID_ START_USER    FROM ACT_RU_TASK A inner join     ACT_RE_PROCDEF C on A.PROC_DEF_ID_ = C.ID_
+                                        inner join ACT_HI_PROCINST H on A.PROC_INST_ID_=H.PROC_INST_ID_
+                                        left join     ACT_RU_IDENTITYLINK D on A.ID_=D.TASK_ID_ and
+((A.ASSIGNEE_ is not null and A.ASSIGNEE_=D.USER_ID_) or(A.ASSIGNEE_ is  null  and D.USER_ID_ is not null))
+ WHERE (A.DELETE_FLAG IS NULL OR A.DELETE_FLAG=0)    AND         A.SUSPENSION_STATE_='1'
+ AND          (A.ASSIGNEE_=?  or( A.ASSIGNEE_ is null and D.USER_ID_=?))
+ AND UPPER(C.KEY_) =UPPER(?)     order by claim_time_ desc    LIMIT ? OFFSET ?
+
+</select>
+    <select id="654">
+ SELECT A.ID_ ID,   A.ID_,   A.PROC_INST_ID_ PROC_INST_ID,   A.PROC_DEF_ID_ PROC_DEF_ID,   A.NAME_ NAME,   A.DESCRIPTION_ TASK_DESC,   ASSIGNEE_ ASSIGNEE,   TASK_DEF_KEY_ TASK_DEF_KEY,   DATE_FORMAT(CREATE_TIME_,'%Y-%m-%d %H:%i:%s')   CREATE_TIME,   A.CREATE_TIME_,   C.NAME_ PROC_NAME,   C.KEY_ PROC_KEY,      C.CATEGORY_ PROC_CATEGORY,EXECUTION_ID_,   DATE_FORMAT(H.START_TIME_,'%Y-%m-%d %H:%i:%s') PROC_START_TIME,   H.START_USER_ID_ START_USER    FROM ACT_RU_TASK A inner join     ACT_RE_PROCDEF C on A.PROC_DEF_ID_ = C.ID_   inner join ACT_HI_PROCINST H on A.PROC_INST_ID_=H.PROC_INST_ID_    left join     ACT_RU_IDENTITYLINK D on A.ID_=D.TASK_ID_ and     ((A.ASSIGNEE_ is not null and A.ASSIGNEE_=D.USER_ID_) or(A.ASSIGNEE_ is  null  and D.USER_ID_ is not null))        WHERE (A.DELETE_FLAG IS NULL OR A.DELETE_FLAG=0)    AND         A.SUSPENSION_STATE_='1'                               AND          (A.ASSIGNEE_=?  or( A.ASSIGNEE_ is null and D.USER_ID_=?))             AND A.PROC_INST_ID_ IN     (      ?      )     order by TI desc    LIMIT ? OFFSET ?
+    </select>
+</mapper>

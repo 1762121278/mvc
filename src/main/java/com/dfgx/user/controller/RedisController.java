@@ -45,7 +45,8 @@ public class RedisController {
         listOperations.leftPush("list", "hello");
         listOperations.leftPush("list", "world");
         listOperations.leftPush("list", "java");
-        List<String> list = listOperations.range("list", 0, 2);   // 取 key 值为 list 的索引0到索引2的list
+        // 取 key 值为 list 的索引0到索引2的list
+        List<String> list = listOperations.range("list", 0, 2);
         redisTemplate.expire("list", 6, TimeUnit.SECONDS);
         return list;
     }

@@ -1,13 +1,16 @@
 package com.dfgx.user.controller;
 
 
+import com.dfgx.user.entity.Student;
 import com.dfgx.user.entity.TUser;
+import com.dfgx.user.mapper.StudentMapper;
 import com.dfgx.user.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -17,6 +20,9 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private StudentMapper studentMapper;
 
     /**
      * @description: todo
@@ -57,6 +63,15 @@ public class UserController {
     @DeleteMapping("/delete")
     public int delete(@RequestParam Integer id) {
         return userService.delete(id);
+    }
+
+    @PostMapping("/insert1")
+    public void insert1(){
+        ArrayList<Student> list = new ArrayList<>();
+        list.add(new Student("1","11","111"));
+        list.add(new Student("2","22","222"));
+        list.add(new Student("3","33","333"));
+        studentMapper.insertList(list);
     }
 
 }
