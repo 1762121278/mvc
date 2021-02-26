@@ -1,8 +1,0 @@
-diff a/src/main/java/com/dfgx/user/config/AppMvcConfig.java b/src/main/java/com/dfgx/user/config/AppMvcConfig.java	(rejected hunks)
-@@ -26,5 +26,6 @@
-     public void addInterceptors(InterceptorRegistry registry) {
-         registry.addInterceptor( myInterceptor).addPathPatterns("/user/select");//.excludePathPatterns("/user/select")
-     }
-+     
- }
- 
