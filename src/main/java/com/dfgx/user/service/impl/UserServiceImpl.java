@@ -3,8 +3,10 @@ package com.dfgx.user.service.impl;
 import com.dfgx.user.mapper.TUserMapper;
 import com.dfgx.user.entity.TUser;
 import com.dfgx.user.entity.TUserExample;
+import com.dfgx.user.service.Name;
 import com.dfgx.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.redis.core.BoundValueOperations;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,6 +19,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private TUserMapper userMapper;
+
+    @Qualifier
+    private Name name;
     /**
      * @return: java.util.List<com.dfgx.user.pojo.TUser>
      * @author: Today
@@ -41,6 +46,7 @@ public class UserServiceImpl implements UserService {
      * @date: 2020/12/22 15:50
      * @description:插入User对象到数据库
      */
+    @Override
     public int insert(TUser user) {
         int insert = userMapper.insert(user);
         return insert;
@@ -53,6 +59,7 @@ public class UserServiceImpl implements UserService {
      * @date: 2020/12/22 16:50
      * @description:修改
      */
+    @Override
     public int update(Integer id){
         TUser user = new TUser();
         user.setId(id);
@@ -70,6 +77,7 @@ public class UserServiceImpl implements UserService {
      * @date: 2020/12/22 16:52
      * @description:删除
      */
+    @Override
     public int delete(Integer id){
         TUserExample example = new TUserExample();
         TUserExample.Criteria criteria = example.createCriteria().andIdEqualTo(9);

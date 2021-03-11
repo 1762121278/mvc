@@ -14,6 +14,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 @EnableScheduling
 @EnableKafka
+
 public class MvcApplication {
 
     public static void main(String[] args) {

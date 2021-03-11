@@ -3,15 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
 </head>
 <body>
-<form class="form-signin" id="loginForm" method="post" action="/user/select">
+    <form>
     <h2 class="form-signin">用户登录</h2>
-
-        <input type="text" class="form-control" id="loginacct" name="loginacct"  placeholder="请输入登录账号" ><br>
-        <input type="password" class="form-control" id="password" name="password"  placeholder="请输入登录密码" ><br>
-        <input type="submit">
-    </div>
+        <label for="loginacct">账号:</label><input type="text" class="form-control" id="loginacct" name="msg" placeholder="请输入登录账号" ><br>
+        <label for="password">密码:</label><input type="password" class="form-control" id="password" name="password"  placeholder="请输入登录密码" ><br>
+        <input type="button" id="but1" value="店家发送AJAX" onclick="but2()">
     </form>
+
+    <script>
+        function but2() {
+            $.ajax({
+                type:'GET',
+                url:'http://localhost:8084/sendMsg',
+                dataType:"json",
+                success:function(data){
+                    alert(data)
+                }
+            })}
+    </script>
  </body>
 </html>

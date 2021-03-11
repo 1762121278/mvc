@@ -22,6 +22,14 @@ import java.util.concurrent.TimeUnit;
 @Api(tags = "操作Redis的5种数据类型")
 public class RedisController {
 
+    public static void main(String[] args){
+        for(int i = 0; i < 5; i++) {
+            System.out.println("helloworld");
+                break;
+                //continue;
+        }
+    }
+
     @Autowired
     private RedisTemplate redisTemplate;
 

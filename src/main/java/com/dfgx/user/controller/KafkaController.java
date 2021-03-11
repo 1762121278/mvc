@@ -8,6 +8,7 @@ import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -26,13 +27,17 @@ public class KafkaController {
 
     //发送消息的方法
     @ApiOperation("fafka发送消息")
-    @PostMapping("/sendMsg")
-    public void send(String msg){
-        KafkaMessage message = new KafkaMessage();
+    @GetMapping("/sendMsg")
+    public int send(){
+        String msg = "接收消息";
+        System.out.println(msg);
+        /*KafkaMessage message = new KafkaMessage();
         message.setId(System.currentTimeMillis());
         message.setMsg(msg);
         message.setSendTime(new Date());
         log.info("发送消息 message = {}", gson.toJson(message));
-        kafkaTemplate.send("topic3",gson.toJson(message));
+        kafkaTemplate.send("topic3",gson.toJson(message));*/
+        System.out.println("dcfffwf");
+        return 111;
     }
 }

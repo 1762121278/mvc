@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-    <!-- 延迟加载和驼峰式编写规范支持 -->
+    <!-- 延迟加载和驼峰式编写规范支持 开启缓存-->
     <settings>
+        <!--这个是延迟加载策略：有些信息没必要立马加载，而是在使用的时候再加载，一般在一对多或者多对多关联查询的时候用的比较多-->
         <setting name="lazyLoadingEnabled" value="true"/>
+        <!--驼峰式编写规范-->
         <setting name="mapUnderscoreToCamelCase" value="true"/>
+        <!--是否开启二级缓存（一级缓存默认开启）-->
+        <setting name="cacheEnabled" value="true"/>
     </settings>
+
 </configuration>
