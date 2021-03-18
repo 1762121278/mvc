@@ -26,4 +26,9 @@ public class OriginMybatis implements StudentMapper{
     public List<Student> selectByName() {
         return null;
     }
+
+    @Override
+    public void upAndIn() {
+
+    }
 }

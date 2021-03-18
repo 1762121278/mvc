@@ -96,6 +96,10 @@ public class UserController {
         studentMapper.insertList(list);
     }
 
-
-
+    @ApiOperation(value = "调用存贮过程")
+    @PostMapping("/upAndIn")
+    public void upAndIn() {
+        studentMapper.upAndIn();
+        System.out.println("调用存贮过程完成");
+    }
 }

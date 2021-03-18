@@ -13,4 +13,5 @@ public interface StudentMapper {
 
     void insertList(List<Student> list) throws IOException;
     List<Student> selectByName();
+    void upAndIn();
 }

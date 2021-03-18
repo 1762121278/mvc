@@ -13,4 +13,8 @@
         select * from student;
     </select>
 
+    <select id="upAndIn" parameterType="com.dfgx.user.entity.Student">
+        call up_in();
+    </select>
+
 </mapper>
